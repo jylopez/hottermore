@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>True Love</title>
+	<meta name="author" content="Friends of Hottermore" />
+	<meta name="description" content="True love is smarter than that" />
+	<meta name="keywords"  content="love, utah" />
+	<meta name="Resource-type" content="Document" />
+	<link href="https://s3-us-west-2.amazonaws.com/scripture-pow/favicon.ico" rel="icon" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100i,100,300,400" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+<body>     
+	<div id="root"></div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+	<script type="text/babel">
+		class Greeting extends React.Component {
+				render() {
+						return (<p>Hello hawtness, my old friend</p>);
+				}
+		}
+		ReactDOM.render(
+				<Greeting />,
+				document.getElementById('root')
+		);
+	</script>
+</body>
+</html>
