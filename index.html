@@ -19,15 +19,73 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 	<script type="text/babel">
-		class Greeting extends React.Component {
-				render() {
-						return (<p>Hello hawtness, my old friend</p>);
+		class PageLayout extends React.Component {
+			constructor(props) {
+				super(props);
+				this.previousQuestion = this.previousQuestion.bind(this);
+				this.nextQuestion = this.nextQuestion.bind(this);
+				this.state = {
+					questionNumber: 0
 				}
+			}
+
+			previousQuestion(){
+				this.setState({
+					questionNumber: this.state.questionNumber - 1
+				})
+			}
+
+			nextQuestion(){
+				this.setState({
+					questionNumber: this.state.questionNumber + 1
+				})
+			}
+
+			render() {
+				const questions = [
+					{},
+					{
+						question: "Are you a pecs or biceps kinda woman?",
+						answers: ["Love dem pecs", "Biceps to hold"]
+					},
+					{
+						question: "Ariana Grande or Slipknot?",
+						answers: ["What is a slipknot?", "I've never been to Starbucks."]
+					},
+					{
+						question: "Perfect date?",
+						answers: ["Kissing with tongue", "Kissing no tongue"]
+					}
+				]
+				return (
+					<div>
+						<div>{JSON.stringify(this.state)}</div>
+						{this.state.questionNumber === 0 &&
+							<div onClick={this.nextQuestion} className="clickable">Start the hottermore</div>
+						}
+						{this.state.questionNumber > 0 &&
+							<div>
+								<div>{questions[this.state.questionNumber].question}</div>
+								<div>{questions[this.state.questionNumber].answers}</div>
+								<div onClick={this.previousQuestion} className="clickable">Back</div>
+								<div onClick={this.nextQuestion} className="clickable">Next</div>
+							</div>
+							
+						}
+					</div>
+				);
+			}
 		}
+
+
 		ReactDOM.render(
-				<Greeting />,
+				<PageLayout />,
 				document.getElementById('root')
 		);
+
+
+
 	</script>
+
 </body>
 </html>
