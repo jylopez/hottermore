@@ -34,6 +34,15 @@
 			}
 		]
 
+		const candidates = [
+			{
+				name: 'Andy'
+			},
+			{
+				name: 'Nate'
+			}
+		]
+
 		class PageLayout extends React.Component {
 			constructor(props) {
 				super(props);
@@ -114,7 +123,7 @@
 						{ this.state.status === 'showResults' &&
 							<div>
 								<div>Hottermore match!</div>
-								<div>It's Andy.</div>
+								<div>It's {candidates[Math.floor(Math.random()*candidates.length)].name}!</div>
 							</div>
 						}
 					</div>
