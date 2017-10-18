@@ -14,6 +14,7 @@ h1 {
 /* =24px */
 h2 {
   font-size: 3rem;
+  text-align: center;
 }
 
 .container__item {
@@ -221,58 +222,6 @@ h2 {
           transform: translateY(-50%);
 }
 
-.scroller {
-  width: 7.5rem;
-  display: inline-block;
-  float: right;
-  position: relative;
-  top: -35%;
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
-  overflow: hidden;
-}
-.scroller .page-title {
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 0.5rem;
-  display: -ms-inline-grid;
-  display: inline-grid;
-  float: left;
-  position: relative;
-  margin-top: 1rem;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-.scroller .timeline {
-  width: 1.5rem;
-  height: 9rem;
-  display: inline-block;
-  float: right;
-}
-.scroller .timeline .timeline__unit {
-  width: 100%;
-  height: 0.1rem;
-  display: block;
-  background-color: #fff;
-  margin: 0 0 2rem;
-  opacity: 0.2;
-}
-.scroller .timeline .timeline__unit.timeline__unit--active {
-  opacity: 1;
-}
-.scroller .timeline .timeline__unit.timeline__unit--active:after {
-  opacity: 0.2;
-}
-.scroller .timeline .timeline__unit:after {
-  content: '';
-  width: 70%;
-  height: 0.1rem;
-  display: block;
-  position: relative;
-  float: right;
-  background-color: #fff;
-  top: 1rem;
-}
 .button {
   display: inline-block;
   font-weight: bold;
@@ -283,7 +232,7 @@ h2 {
   transition: background 300ms;
 }
 .button.outline {
-  color: white;
+  color: #fff;
   overflow: hidden;
   position: relative;
 }
@@ -329,6 +278,10 @@ h2 {
 }
 .button:hover .lines:after {
   transform: translateY(100%);
+}
+.button-holder {
+  padding-top: 150px;
+  text-align: center;
 }
 .gallery {
   background-img: url();

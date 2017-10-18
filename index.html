@@ -129,7 +129,7 @@
 							        </header>
 
 							        <div className="ellipses-container">
-							          <h2 onClick={this.previousQuestion} className="greeting">Discover</h2>
+							          <h2 onClick={this.startQuiz} className="greeting">Discover</h2>
 							          <div className="ellipses ellipses__outer--thin">
 
 							            <div className="ellipses ellipses__orbit"></div>
@@ -138,6 +138,9 @@
 
 							          <div className="ellipses ellipses__outer--thick"></div>
 							        </div>
+									<div className="button-holder">
+										<a className="button outline" onClick={this.startQuiz}>Begin<span className="lines"></span></a>
+									</div>
 							      </div>
 							    </div>
 						  	</div>
