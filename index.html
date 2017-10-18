@@ -19,58 +19,103 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 	<script type="text/babel">
+		const questions = [
+			{
+				question: "Are you a pecs or biceps kinda woman?",
+				answers: ["Love dem pecs", "Biceps to hold"]
+			},
+			{
+				question: "Ariana Grande or Slipknot?",
+				answers: ["What is a slipknot?", "I've never been to Starbucks."]
+			},
+			{
+				question: "Perfect date?",
+				answers: ["Kissing with tongue", "Kissing no tongue"]
+			}
+		]
+
 		class PageLayout extends React.Component {
 			constructor(props) {
 				super(props);
+				this.startQuiz = this.startQuiz.bind(this);
 				this.previousQuestion = this.previousQuestion.bind(this);
 				this.nextQuestion = this.nextQuestion.bind(this);
 				this.state = {
-					questionNumber: 0
+					status: 'beginQuiz',
+					questionNumber: 0,
+					quizLength: questions.length
 				}
 			}
 
-			previousQuestion(){
+			startQuiz(){
 				this.setState({
-					questionNumber: this.state.questionNumber - 1
+					status: 'takeQuiz'
 				})
 			}
 
-			nextQuestion(){
+			previousQuestion(){
+				var isFirstQuestion = this.state.questionNumber <= 0
 				this.setState({
-					questionNumber: this.state.questionNumber + 1
+					questionNumber: isFirstQuestion ? 0 : this.state.questionNumber - 1
 				})
+			}
+			
+			nextQuestion(){
+				var isLastQuestion = this.state.questionNumber >= (this.state.quizLength - 1)
+				this.setState({
+					questionNumber: isLastQuestion ? this.findSoulmate() : this.state.questionNumber + 1
+				})
+			}
+
+			findSoulmate(){
+				this.setState({
+					status: 'searchingResults'
+				})
+
+				var i = 0;
+				var iEnd = 100000
+
+				var interval = setInterval(() => { 
+						if (i >= iEnd) {
+							clearInterval(interval);
+							this.setState({
+								status: 'showResults'
+							})
+						}
+						this.setState({
+							counter: i
+						})
+						var randomAddend = Math.floor(Math.random() * iEnd/100) + 1
+						i = i + randomAddend;
+				}, 10);
 			}
 
 			render() {
-				const questions = [
-					{},
-					{
-						question: "Are you a pecs or biceps kinda woman?",
-						answers: ["Love dem pecs", "Biceps to hold"]
-					},
-					{
-						question: "Ariana Grande or Slipknot?",
-						answers: ["What is a slipknot?", "I've never been to Starbucks."]
-					},
-					{
-						question: "Perfect date?",
-						answers: ["Kissing with tongue", "Kissing no tongue"]
-					}
-				]
 				return (
 					<div>
 						<div>{JSON.stringify(this.state)}</div>
-						{this.state.questionNumber === 0 &&
-							<div onClick={this.nextQuestion} className="clickable">Start the hottermore</div>
+						{ this.state.status === 'beginQuiz' &&
+							<div onClick={this.startQuiz} className="clickable">Start the hottermore</div>
 						}
-						{this.state.questionNumber > 0 &&
+						{ this.state.status === 'takeQuiz' &&
 							<div>
 								<div>{questions[this.state.questionNumber].question}</div>
 								<div>{questions[this.state.questionNumber].answers}</div>
 								<div onClick={this.previousQuestion} className="clickable">Back</div>
 								<div onClick={this.nextQuestion} className="clickable">Next</div>
 							</div>
-							
+						}
+						{ this.state.status === 'searchingResults' &&
+							<div>
+								<div>{this.state.counter}</div>
+								<div>Searching...</div>
+							</div>
+						}
+						{ this.state.status === 'showResults' &&
+							<div>
+								<div>Hottermore match!</div>
+								<div>It's Andy.</div>
+							</div>
 						}
 					</div>
 				);
