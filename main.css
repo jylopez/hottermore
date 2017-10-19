@@ -221,8 +221,23 @@ h2 {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
+.button2 {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 15px 30px;
+  text-decoration: none;
+  text-transform: uppercase;
 
+}
+.button2.outline {
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
 .button {
+  cursor: pointer;
   display: inline-block;
   font-weight: bold;
   letter-spacing: 2px;
@@ -324,6 +339,12 @@ h2 {
   .gallery {
     padding: 0;
   }
+}
+.question {
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    font-weight: 400;
+    
 }
 @-webkit-keyframes ellipsesRotate {
   0% {

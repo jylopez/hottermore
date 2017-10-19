@@ -145,7 +145,6 @@
 							    </div>
 						  	</div>
 							<div className="container">
-							    <h2>Be a part of a million+ successful matches, first try</h2>
 							    <div className="gallery-header">
 							      <div className="gallery">
 							        <div>
@@ -164,10 +163,18 @@
 						}
 						{ this.state.status === 'takeQuiz' &&
 							<div>
-								<div>{questions[this.state.questionNumber].question}</div>
-								<div>{questions[this.state.questionNumber].answers}</div>
-								<div onClick={this.previousQuestion} className="clickable">Back</div>
-								<div onClick={this.nextQuestion} className="clickable">Next</div>
+							<div className="container">
+							    <div className="container__item landing-page-container">
+									<div className="ellipses-container">
+										<div className="question">{questions[this.state.questionNumber].question}</div>
+										<div className="button-holder">
+											<div onClick={this.nextQuestion} className="button outline">{questions[this.state.questionNumber].answers[0]}</div>
+											<div onClick={this.nextQuestion} className="button outline">{questions[this.state.questionNumber].answers[1]}</div>
+										</div>
+										<div onClick={this.previousQuestion} className="clickable">Back</div>
+									</div>
+								</div>
+							</div>
 							</div>
 						}
 						{ this.state.status === 'searchingResults' &&
