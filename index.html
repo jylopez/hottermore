@@ -95,7 +95,7 @@
 						this.setState({
 							counter: i
 						})
-						var randomAddend = Math.floor(Math.random() * iEnd/100) + 1
+						var randomAddend = Math.floor(Math.random() * iEnd/450) + 1
 						i = i + randomAddend;
 				}, 10);
 			}
@@ -180,8 +180,14 @@
 						}
 						{ this.state.status === 'searchingResults' &&
 							<div>
-								<div>{this.state.counter}</div>
-								<div>Searching...</div>
+								<div className="container">
+									<div className="container__item landing-page-container">
+										<div className="loader">
+											<div className="loader__figure"></div>
+											<p className="loader__label">Analyzing Potential Matches...{this.state.counter}</p>
+										</div>
+									</div>
+								</div>
 							</div>
 						}
 						{ this.state.status === 'showResults' &&
