@@ -37,10 +37,12 @@
 
 		const candidates = [
 			{
-				name: 'Andy'
+				name: 'Andy',
+				src: "images/andy.jpg"
 			},
 			{
-				name: 'Nate'
+				name: 'Nate',
+				src: "images/nate.jpg"
 			}
 		]
 
@@ -103,7 +105,6 @@
 			render() {
 				return (
 					<div>
-						<div>{JSON.stringify(this.state)}</div>
 						{ this.state.status === 'beginQuiz' &&
 						<div>
 							<div className="container">
@@ -191,13 +192,22 @@
 							</div>
 						}
 						{ this.state.status === 'showResults' &&
-							<div>
-								<div>Hottermore match!</div>
-								<div>It's {candidates[Math.floor(Math.random()*candidates.length)].name}!</div>
-							</div>
+							<ResultsView/>
 						}
 					</div>
 				);
+			}
+		}
+
+		class ResultsView extends React.Component {
+			render(){
+				var candidate = candidates[Math.floor(Math.random()*candidates.length)]
+				return (
+					<div className="results-view">
+						<img src={candidate.src} alt={candidate.name} />
+						<h1>Meet {candidate.name}!</h1>
+					</div>
+				)
 			}
 		}
 

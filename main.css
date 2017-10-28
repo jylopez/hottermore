@@ -540,3 +540,21 @@ h2 {
             transform: rotate(360deg);
   }
 }
+
+.results-view img {
+  display: block;
+  margin: auto;
+  border-radius: 100%;
+  width: 336px;
+}
+
+.results-view {
+  padding: 50px;
+}
+
+.results-view h1 {
+  font-family: "Roboto";
+  font-weight: 100;
+  text-align: center;
+  margin-top: 50px;
+}
